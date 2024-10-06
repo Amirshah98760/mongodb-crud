@@ -59,3 +59,14 @@ app.put('/items/:id', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
+
+// Delete
+app.delete('/items/:id', async (req, res) => {
+    try {
+        await Item.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Item deleted' });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
