@@ -49,3 +49,13 @@ app.get('/items', async (req, res) => {
     }
 });
 
+
+// Update
+app.put('/items/:id', async (req, res) => {
+    try {
+        const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.json(updatedItem);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
