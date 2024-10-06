@@ -38,3 +38,14 @@ app.post('/items', async (req, res) => {
     }
 });
 
+
+// Read
+app.get('/items', async (req, res) => {
+    try {
+        const items = await Item.find();
+        res.json(items);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
