@@ -70,3 +70,7 @@ app.delete('/items/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
