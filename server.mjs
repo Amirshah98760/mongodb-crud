@@ -27,3 +27,14 @@ const itemSchema = new mongoose.Schema({
 
 const Item = mongoose.model('Item', itemSchema);
 
+//Post 
+app.post('/items', async (req, res) => {
+    const newItem = new Item(req.body);
+    try {
+        const savedItem = await newItem.save();
+        res.status(201).json(savedItem);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
